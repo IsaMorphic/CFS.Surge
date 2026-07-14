@@ -1,6 +1,7 @@
 ﻿using CFS.Surge.Core;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Metadata;
 using SixLabors.ImageSharp.PixelFormats;
 
 namespace CFS.Surge.ImageSharp
@@ -50,10 +51,7 @@ namespace CFS.Surge.ImageSharp
             {
                 using (decoder)
                 {
-                    return new ImageInfo(
-                        new PixelTypeInfo(32, PixelAlphaRepresentation.Unassociated),
-                        new Size(decoder.Header.ImageWidth, decoder.Header.ImageHeight),
-                        null);
+                    return new ImageInfo(new Size(decoder.Header.ImageWidth, decoder.Header.ImageHeight), new ImageMetadata());
                 }
             }
             else
