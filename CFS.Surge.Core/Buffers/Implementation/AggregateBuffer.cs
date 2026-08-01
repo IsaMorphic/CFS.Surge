@@ -6,7 +6,7 @@
 
         private readonly long totalLength;
 
-        public AggregateBuffer(params IEnumerable<IBuffer<T>> buffers)
+        public AggregateBuffer(IEnumerable<IBuffer<T>> buffers)
         {
             bufferList = new();
             foreach (IBuffer<T> buffer in buffers)
