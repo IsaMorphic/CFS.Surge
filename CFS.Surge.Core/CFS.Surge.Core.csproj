@@ -6,18 +6,31 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<PackageId>ChosenFewSoftware.Surge</PackageId>
+		<Authors>Isabelle Santin</Authors>
+		<Company>Chosen Few Software</Company>
+		<PackageTags>image format;imagesharp;web</PackageTags>
+		<Description>
+			Chosen Few Software's .NET implementation for the custom Surge for the Web (SSRG) format.
+		</Description>
+		<RepositoryUrl>https://github.com/IsaMorphic/CFS.Surge</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+	
 	<PropertyGroup>
 		<SixLaborsLicenseKey>$(SIXLABORS_LICENSE_KEY)</SixLaborsLicenseKey>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="MinVer" Version="7.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>
