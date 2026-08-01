@@ -86,8 +86,13 @@ namespace CFS.Surge.Core
                                     Vector64.Create(currPixel.PackedValue).AsByte()
                                     ).AsInt16();
 
-                                Vector64<byte> nextPixelVec = Vector64.NarrowWithSaturation(
-                                    Vector64.Max(currPixelVec + unpackedColorVec, Vector64<short>.Zero).AsUInt16(), 
+                                Vector64<byte> nextPixelVec = Vector64.Narrow(
+                                    Vector64.Max(
+                                        Vector64.Min(
+                                            currPixelVec + unpackedColorVec, 
+                                            Vector64.CreateScalar(short.MaxValue)
+                                            ), Vector64<short>.Zero
+                                        ).AsUInt16(), 
                                     Vector64<ushort>.Zero);
                                 currPixel.PackedValue = nextPixelVec.AsUInt32().ToScalar();
 
@@ -139,7 +144,7 @@ namespace CFS.Surge.Core
                 configuration?.StreamProcessingBufferSize 
                 ?? DEFAULT_BLOCK_SIZE, cancellationToken))
             {
-                decodeBuffer = decodeBuffer?.Append(pieceBuffer) ?? new(pieceBuffer);
+                decodeBuffer = decodeBuffer?.Append(pieceBuffer) ?? new([pieceBuffer]);
 
                 DecoderState state = new(currLayerIdx, decodeBuffer, decodedImage, cancellationToken);
                 DecodeInner(0, -1, 0, 0, decodedImage.Width, decodedImage.Height, state);
