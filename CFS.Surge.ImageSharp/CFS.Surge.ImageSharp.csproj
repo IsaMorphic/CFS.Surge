@@ -1,13 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CFS.Surge.Core\CFS.Surge.Core.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<PackageId>ChosenFewSoftware.Surge.ImageSharp</PackageId>
+		<Authors>Isabelle Santin</Authors>
+		<Company>Chosen Few Software</Company>
+		<PackageTags>image format;imagesharp;web</PackageTags>
+		<Description>
+			ImageSharp plugin for Chosen Few Software's .NET implementation of the custom Surge for the Web (SSRG) format.
+		</Description>
+		<RepositoryUrl>https://github.com/IsaMorphic/CFS.Surge</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MinVer" Version="7.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<ProjectReference Include="..\CFS.Surge.Core\CFS.Surge.Core.csproj" />
+	</ItemGroup>
 
 </Project>
