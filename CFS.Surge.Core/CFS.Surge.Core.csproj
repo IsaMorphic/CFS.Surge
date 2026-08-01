@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackageId>ChosenFewSoftware.Surge</PackageId>
+		<PackageId>ChosenFewSoftware.Surge.Core</PackageId>
 		<Authors>Isabelle Santin</Authors>
 		<Company>Chosen Few Software</Company>
 		<PackageTags>image format;imagesharp;web</PackageTags>

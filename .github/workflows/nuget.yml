@@ -23,7 +23,7 @@ jobs:
           dotnet-version: 10.0.x
       - name: Restore all dependencies
         run: dotnet restore
-      - name: Build CFS.Surge
+      - name: Build CFS.Surge.Core
         run: dotnet build CFS.Surge.Core --no-restore --configuration Release
       - name: Build CFS.Surge.ImageSharp
         run: dotnet build CFS.Surge.ImageSharp --no-restore --configuration Release
