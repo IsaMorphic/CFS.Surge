@@ -89,10 +89,10 @@ namespace CFS.Surge.Core
                                 Vector64<byte> nextPixelVec = Vector64.Narrow(
                                     Vector64.Max(
                                         Vector64.Min(
-                                            currPixelVec + unpackedColorVec, 
-                                            Vector64.CreateScalar(short.MaxValue)
+                                            currPixelVec + unpackedColorVec,
+                                            Vector64.Create(short.MaxValue)
                                             ), Vector64<short>.Zero
-                                        ).AsUInt16(), 
+                                        ).AsUInt16(),
                                     Vector64<ushort>.Zero);
                                 currPixel.PackedValue = nextPixelVec.AsUInt32().ToScalar();
 
@@ -106,6 +106,8 @@ namespace CFS.Surge.Core
 
         private async IAsyncEnumerable<IReadOnlyBuffer<int>> ReadPiecesAsync(int maxReadSize, [EnumeratorCancellation] CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             int idx = 0;
             bool isCompleted = false;
             while (!isCompleted && idx < header.ImageLayerOffsets.Length)
@@ -129,6 +131,8 @@ namespace CFS.Surge.Core
         public async IAsyncEnumerable<Image<TPixel>> DecodeAsync<TPixel>([EnumeratorCancellation] CancellationToken cancellationToken = default)
             where TPixel : unmanaged, IPixel<TPixel>
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             uint averagePixelValue = 
                 ((header.AveragePixelValue & 0x7F000000) << 1) | 
                 (header.AveragePixelValue & 0x00FFFFFF);
